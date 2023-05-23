@@ -1,0 +1,59 @@
+{% extends "BlogRiverPlate/padre.html" %}
+
+{% load static %}
+
+{% block navBar %}
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+
+                <a class="navbar-brand" href="{% url "inicio" %}">INICIO</a>
+                <a class="navbar-brand" href="{% url "inicioMensajeria" %}">Mensajeria</a>
+                <a class="navbar-brand" href="{% url "editarPerfilUsuario" %}">Editar Perfil</a>
+                <a class="navbar-brand" href="{% url "editarFotoDePerfil" %}">Editar Foto</a>
+                <a class="navbar-brand" href="{% url "logout" %}">Cerrar Sesion</a>
+                
+                
+            </div>
+        </nav>
+{% endblock navBar %}
+
+{% block titulo %}
+<h1 class="masthead-heading text-uppercase mb-0">Perfil</h1>
+{% endblock titulo %}
+
+{% block primerSeccionPagina %}
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ user.username }}</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div>
+            <img src="{{ avatar }}" alt="Avatar" style="width:300px;height:300px;">
+            &nbsp;
+            <h3> </h3>
+            &nbsp; 
+            <h3> Nombre real: {{ user.first_name }} {{ user.last_name }} </h3>
+            &nbsp;
+            <h3> E-Mail: {{ user.email}} </h3>
+            &nbsp;
+            
+
+        </div>
+{% endblock primerSeccionPagina %}
+
+{% block segundaSeccionPagina %}
+        
+{% endblock segundaSeccionPagina %}
+        
+{% block terceraSeccionPagina %}
+        
+{% endblock terceraSeccionPagina %}
+        
+{% block botonSobreMiInicio %}
+ <a class="btn btn-xl text-uppercase btn-outline-light " href="{% url "sobreMi" %}">Sobre Mi</a>
+{% endblock botonSobreMiInicio %}           

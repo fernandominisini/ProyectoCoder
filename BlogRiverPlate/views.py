@@ -1,56 +1,20 @@
 from django.shortcuts import render
-from .models import Jugador
-from .forms import JugadorForm, RegistroUsuarioForm, UserEditForm
+from django.template import loader
+from .forms import RegistroUsuarioForm, UserEditForm
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
-
+from accounts.views import obtenerAvatar
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def inicio(request):
-    return render(request, 'BlogRiverPlate/inicio.html')
+    return render(request, 'BlogRiverPlate/inicio.html',{"avatar":obtenerAvatar(request)})
 
-def plantilla(request):
-    return render(request, 'BlogRiverPlate/plantilla.html')
 
 def informacion(request):
-    return render(request, 'BlogRiverPlate/informacion.html')
-
-def noticias(request):
-    return render(request, 'BlogRiverPlate/noticias.html')
-
-
-def crear_jugador(request):
-    nombre_jugador="Enzo"
-    apellido_jugador="Fernandez"
-    posicion_jugador="5"
-    
-    jugador=Jugador(nombre=nombre_jugador, apellido=apellido_jugador, posicion=posicion_jugador)
-    jugador.save()
-    respuesta=f"Jugador creado ---- {nombre_jugador} - {apellido_jugador}"
-    return HttpResponse(respuesta)
-
-
-def jugadores(request):
-
-    if request.method == "POST":
-        form = JugadorForm(request.POST)
-        if form.is_valid():
-            jugador = Jugador()
-            jugador.nombre = form.cleaned_data['nombre']
-            jugador.apellido = form.cleaned_data['apellido']
-            jugador.posicion = form.cleaned_data['posicion']
-            
-            jugador.save()
-            form = JugadorForm()
-    else:
-        form = JugadorForm()
-
-    jugadores = Jugador.objects.all() 
-
-    return render(request, "BlogRiverPlate/plantilla.html", {"jugadores": jugadores, "form" : form})
+    return render(request, 'BlogRiverPlate/informacion.html',{"avatar":obtenerAvatar(request)})
 
 
 def login_request(request):
@@ -64,14 +28,14 @@ def login_request(request):
             
             if usuario is not None:
                 login(request, usuario)
-                return render(request, "BlogRiverPlate/inicio.html", {"mensaje": f"Usuario {usu} logueado correctamente"})
+                return render(request, "BlogRiverPlate/inicio.html", {"mensaje": f"Usuario {usu} logueado correctamente","avatar":obtenerAvatar(request)})
             else:
-                return render(request, "BlogRiverPlate/login.html", {"form": form, "mensaje": "Usuario o contreaseña incorrectos"})
+                return render(request, "BlogRiverPlate/login.html", {"form": form, "mensaje": "Usuario o contreaseña incorrectos","avatar":obtenerAvatar(request)})
         else:
-            return render(request, "BlogRiverPlate/login.html", {"form": form, "mensaje": "Usuario o contreaseña incorrectos"})
+            return render(request, "BlogRiverPlate/login.html", {"form": form, "mensaje": "Usuario o contreaseña incorrectos","avatar":obtenerAvatar(request)})
     else:
         form=AuthenticationForm()
-        return render(request, "BlogRiverPlate/login.html", {"form": form})
+        return render(request, "BlogRiverPlate/login.html", {"form": form,"avatar":obtenerAvatar(request)})
     
 def register(request):
     if request.method=="POST":
@@ -79,11 +43,11 @@ def register(request):
         if form.is_valid():
             username= form.cleaned_data.get("username")
             form.save()
-            return render(request, "BlogRiverPlate/inicio.html", {"mensaje": f"Usuario {username} creado correctamente"})
+            return render(request, "BlogRiverPlate/inicio.html", {"mensaje": f"Usuario {username} creado correctamente","avatar":obtenerAvatar(request)})
         else:
-            return render(request, "BlogRiverPlate/register.html", {"form": form, "mensaje": "Error al crear el usuario"})
+            return render(request, "BlogRiverPlate/register.html", {"form": form, "mensaje": "Error al crear el usuario","avatar":obtenerAvatar(request)})
     else:
         form= RegistroUsuarioForm()
-        return render(request, "BlogRiverPlate/register.html", {"form": form})
+        return render(request, "BlogRiverPlate/register.html", {"form": form,"avatar":obtenerAvatar(request)})
     
  

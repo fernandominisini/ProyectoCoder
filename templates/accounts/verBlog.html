@@ -1,0 +1,74 @@
+{% extends "BlogRiverPlate/padre.html" %}
+
+{% load static %}
+
+{% block navBar %}
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+
+                <a class="navbar-brand" href="{% url "inicio" %}">INICIO</a>
+                <a class="navbar-brand" href="{% url "listaDeBlogs" %}">Blogs</a>
+                <a class="navbar-brand" href="{% url "perfilDeUsuario" %}">{{ user.username }}</a>
+                <img src="{{ avatar }}" alt="Avatar" style="width:50px;height:50px;">
+                <a class="navbar-brand" href="{% url "logout" %}">Cerrar Sesion</a>
+                
+                
+            </div>
+        </nav>
+{% endblock navBar %}
+
+{% block titulo %}
+<h1 class="masthead-heading text-uppercase mb-0">Todos los blogs</h1>
+{% endblock titulo %}
+
+{% block primerSeccionPagina %}
+<section class="page-section portfolio" id="portfolio">
+    {% for blog in blogs %}
+    <div class="container">
+        
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"> {{ blog.tituloDelBlog }}</h2>
+        
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        &nbsp;
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    
+                    <div class="post-preview">
+                        
+                            <h1 class="post-title">{{ blog.subtituloDelBlog.upper }}</h1>
+                            <p class="post-subtitle"> Publicado por {{blog.autorDelBlog}}, {{blog.fechaDelBlog}}</p>
+                        
+                        <p class="post-meta">
+                            &nbsp;
+                            {{ blog.cuerpoDelBlog}}
+                        </p>
+                        
+                    </div>
+                </div>    
+            </div>    
+        </div>    
+
+
+        
+        
+    </div>
+    {% endfor %}
+</section>
+{% endblock primerSeccionPagina %}
+
+{% block segundaSeccionPagina %}
+
+{% endblock segundaSeccionPagina %}
+
+{% block terceraSeccionPagina %}
+
+{% endblock terceraSeccionPagina %}
+
+{% block botonSobreMiInicio %}
+<a class="btn btn-xl text-uppercase btn-outline-light " href="{% url "sobreMi" %}">Sobre Mi</a>
+{% endblock botonSobreMiInicio %}

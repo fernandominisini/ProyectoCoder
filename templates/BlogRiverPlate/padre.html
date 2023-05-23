@@ -32,7 +32,7 @@
             
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
+                {% block navBar %}
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'inicio' %}">Home</a>
@@ -42,20 +42,23 @@
                         <a class="nav-link" href="#about">Historia</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'noticias' %}">Noticias</a>
+                        <a class="nav-link" href="{% url 'perfilDeUsuario' %}">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'plantilla' %}">Plantilla </a>
+                        <a class="nav-link" href="{% url 'inicioMensajeria' %}">Mensajeria </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog">Blog</a>
+                        <a class="nav-link" href="{% url 'listaDeBlogs' %}">Blogs de noticias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact">Acerca de mi</a>
                     </li>
                     <li class="nav-item ml-0 ml-lg-4">
                         <a class="nav-link btn btn-primary" href="{% url 'logout' %}">LOGOUT</a>
                     <p>Bienvenido  {{ user.username }}</p>
+                    <li class="nav-item">
+                    <img src="{{ avatar }}" alt="Avatar" style="width:50px;height:50px;">
+                    </li>
                     <li class="nav-item ml-0 ml-lg-4">
                         {% else %}
                         <a class="nav-link btn btn-success" href="{% url 'login' %}">LOGIN</a>
@@ -65,6 +68,7 @@
                         <a class="nav-link btn btn-secondary" href="{% url 'register' %}">REGISTER</a> 
                         {% endif %}   
                 </ul>
+                {% endblock navBar %}
             </div>
             
         </div>
@@ -157,6 +161,17 @@
         </div>
     </header>
     <div>
+        {% block primerSeccionPagina %}
+
+        {% endblock primerSeccionPagina %}
+
+        {% block segundaSeccionPagina %}    
+
+        {% endblock segundaSeccionPagina %}
+
+        {% block terceraSeccionPagina %}
+
+        {% endblock terceraSeccionPagina %}
         <center>
             {% block content %}   
             
@@ -269,9 +284,9 @@
 
         <div class="container">
             <h6 class="xs-font mb-0"></h6>
-            <h3 class="section-title mb-5">Contactenos</h3>
+            <h3 class="section-title mb-5">ACERCA DE MI . . .</h3>
 
-            <div class="row align-items-center justify-content-between">
+            <!--<div class="row align-items-center justify-content-between">
                 <div class="col-md-8 col-lg-7">
 
                     <form class="contact-form">
@@ -293,8 +308,18 @@
                 </div>
                 <div class="col-md-4 d-none d-md-block order-1">
                     <ul class="list">
-                        <li class="list-head">
-                            <h6>CONTACT INFO</h6>
+                        <li class="list-head">-->
+                            <h6>
+                                <center>
+                                ¡Hola! 
+                                Mi nombre es Fernando Minisini, oriundo de Villa Regina, Rio Negro. Soy estudiante del curso de python de CoderHouse en la comisión 51325.
+                                Si todo sale de acuerdo a lo planeado a fin de año me recibiré de Licenciado en higiene y seguridad laboral.
+                                Actualmente trabajo en el sector de Mantenimiento de la empresa Ciati A.C, dedicada a la prestación de servicios analíticos, de tecnología y de 
+                                asistencia técnica para las industrias de alimentos, de energía y de ambiente.
+                                Mi fanatismo por la tecnología y la electronica me llevó a crear mi propio emprendimiento de soluciones informaticas brindando sericio de reparación
+                                de computadoras, entre otras cosas. 
+                            </center>
+                            </h6>
                         </li>
                         <li class="list-body">
                             
@@ -313,14 +338,14 @@
                         <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a target="_blank" href="https://www.linkedin.com/in/fernando-minisini/">FMinis</a></p>
                     </div>
                     <div class="col-md-6 text-center text-md-right">
-                        <div class="social-links">
+                        <!--<div class="social-links">
                             <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
                             <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>
                             <a href="javascript:void(0)" class="link"><i class="ti-google"></i></a>
                             <a href="javascript:void(0)" class="link"><i class="ti-pinterest-alt"></i></a>
                             <a href="javascript:void(0)" class="link"><i class="ti-instagram"></i></a>
                             <a href="javascript:void(0)" class="link"><i class="ti-rss"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div> 
             </footer>

@@ -16,12 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from BlogRiverPlate.views import *
+from AppMessages.views import *
+from accounts.views import *
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-     #path("", inicio),
+    path("", inicio),
     path("BlogRiverPlate/", include("BlogRiverPlate.urls")),
+    path("AppMessages/", include("AppMessages.urls")),
+    path("accounts/", include("accounts.urls")),
 ]

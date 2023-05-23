@@ -3,10 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-class JugadorForm (forms.Form):
-    nombre=forms.CharField(max_length=50, label = "Nombre ")
-    apellido=forms.CharField(max_length=50, label = "Apellido ")
-    posicion=forms.CharField(max_length=50, label = "Posición ")
+
     
 class RegistroUsuarioForm (UserCreationForm):
     email=forms.EmailField(label="Email Usuario")

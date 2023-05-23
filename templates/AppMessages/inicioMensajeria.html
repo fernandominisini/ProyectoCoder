@@ -1,0 +1,64 @@
+{% extends "BlogRiverPlate/padre.html" %}
+
+{% load static %}
+
+{% block navBar %}
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'inicio' %}">Home</a>
+    </li>
+    <li class="nav-item">
+        {% if user.is_authenticated %}
+        
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'bandejaDeEntrada' %}">Bandeja De Entrada</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'enviarMensaje' %}">Enviar Mensaje </a>
+    </li>
+    <li class="nav-item">
+        
+    
+    <li class="nav-item ml-0 ml-lg-4">
+        <a class="nav-link btn btn-primary" href="{% url 'logout' %}">LOGOUT</a>
+    <p>Bienvenido  {{ user.username }}</p>
+    <img src="{{ avatar }}" alt="Avatar" style="width:50px;height:50px;">
+    <li class="nav-item ml-0 ml-lg-4">
+        {% else %}
+        <a class="nav-link btn btn-success" href="{% url 'login' %}">LOGIN</a>
+    </li>
+    
+    <li class="nav-item ml-0 ml-lg-4">
+        <a class="nav-link btn btn-secondary" href="{% url 'register' %}">REGISTER</a> 
+        {% endif %}   
+</ul>
+{% endblock navBar %}
+
+{% block titulo %}
+                <h1 class="masthead-heading text-uppercase mb-0">Mensajeria</h1>
+                                
+                {% endblock titulo %}
+
+{% block primerSeccionPagina %}
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ mensaje }}</h2>
+        &nbsp;
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Seleccione una opcion</h2>
+        
+
+                        
+    </div>
+</section>
+{% endblock primerSeccionPagina %}
+
+{% block segundaSeccionPagina %}
+
+{% endblock segundaSeccionPagina %}
+
+{% block terceraSeccionPagina %}
+
+{% endblock terceraSeccionPagina %}
+

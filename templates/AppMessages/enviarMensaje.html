@@ -1,0 +1,74 @@
+{% extends "BlogRiverPlate/padre.html" %}
+
+{% load static %}
+
+{% block navBar %}
+<ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'inicio' %}">Home</a>
+    </li>
+    <li class="nav-item">
+        {% if user.is_authenticated %}
+        
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'bandejaDeEntrada' %}">Bandeja De Entrada</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'enviarMensaje' %}">Enviar Mensaje </a>
+    </li>
+    <li class="nav-item">
+        
+    
+    <li class="nav-item ml-0 ml-lg-4">
+        <a class="nav-link btn btn-primary" href="{% url 'logout' %}">LOGOUT</a>
+    <p>Bienvenido  {{ user.username }}</p>
+    <img src="{{ avatar }}" alt="Avatar" style="width:50px;height:50px;">
+    <li class="nav-item ml-0 ml-lg-4">
+        {% else %}
+        <a class="nav-link btn btn-success" href="{% url 'login' %}">LOGIN</a>
+    </li>
+    
+    <li class="nav-item ml-0 ml-lg-4">
+        <a class="nav-link btn btn-secondary" href="{% url 'register' %}">REGISTER</a> 
+        {% endif %}   
+</ul>     
+{% endblock navBar %}
+
+{% block titulo %}
+                <h1 class="masthead-heading text-uppercase mb-0">Enviar Mensaje</h1>
+                
+                {% endblock titulo %}
+
+{% block primerSeccionPagina %}
+
+{% endblock primerSeccionPagina %}
+
+{% block segundaSeccionPagina %}
+
+{% endblock segundaSeccionPagina %}
+
+{% block terceraSeccionPagina %}
+<section class="page-section" id="contact">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ingrese los datos porfavor</h2>
+    </div>
+    &nbsp;
+
+    <div class="container">
+        <h3> {{ mensaje }} </h3>
+        <form action="{% url "enviarMensaje" %}" method="POST">{% csrf_token %}
+
+            <table>
+
+                {{ form.as_table }}
+
+            </table>
+
+            <input type="submit" value="Enviar">
+
+        </form>
+    </div>
+{% endblock terceraSeccionPagina %}
+
