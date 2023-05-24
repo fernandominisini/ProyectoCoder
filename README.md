@@ -3,7 +3,7 @@
 BLOG RIVER PLATE
 
 DESCRIPCIÓN:
-BlogRIverPlate es un sitio web en construcción donde se muestra la actualidad del Club River Plate. Podremos conocer su historia, logros y las noticias actualizadas sobre el club. 
+BlogRIverPlate es un sitio web donde se muestra la actualidad del Club River Plate. Podremos conocer su historia, logros y las noticias actualizadas sobre el club. 
 
 ACCESO:
 En primer lugar debemos ingresar al repositorio de GitHub mediante el siguiente link para obtener el proyecto.
