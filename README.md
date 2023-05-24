@@ -27,6 +27,8 @@ Mediante el link http://127.0.0.1:8000/admin podremos ingresar al panel de admin
 username: fercho
 Password: river091218
 
+VIDEO PRESENTACION: https://drive.google.com/drive/folders/1flPqwNJcqvCtouior2ngBX1v6f3WlLfL?usp=sharing
+
 AUTOR:
 
 Proyecto creado por Fernando Minisini, estudiante comision N° 51325 de Curso Python CoderHouse.
